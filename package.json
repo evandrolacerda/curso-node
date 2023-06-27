@@ -1,0 +1,11 @@
+{
+  "name": "curso-senac",
+  "version": "1.0.0",
+  "description": "Projeto Curso Senac",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Evandro Lacerda",
+  "license": "ISC"
+}
