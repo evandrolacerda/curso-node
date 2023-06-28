@@ -1,21 +1,35 @@
-const http = require("http");
-
-const manipuladorHttp = require('./src/manipuladorHttp')
-
-console.log( manipuladorHttp.digaOla() );
+const express = require('express');
 
 
-// const httpHandle = function( request, response ){
-//     response.writeHead(200, {"Content-Type": "text/html"});
-//     response.write("<h1>Hello World</h1>");
-//     response.end();
-// };
 
-//const server = http.createServer( httpHandle );
+const aplicativo = express();
+aplicativo.use( express.json() );
 
-const server = http.createServer( manipuladorHttp.manipuladorHttp );
+aplicativo.get("/", function( requisicao, resposta ){
+    resposta.send("<h1>Olá Mundo</h1>");
+});
+
+aplicativo.post("/contato", function( requisicao, resposta ){
+    const nome = requisicao.body.usuario.nome;
+    const email = requisicao.body.usuario.email;
+
+    const filhos = requisicao.body.usuario.filhos;
+
+    filhos.forEach( function(filho ){
+        console.log( filho.nome , filho.email );
+    });
 
 
-server.listen( 3000, function(){
-    console.log("Servidor Escutando na porta 3000");
-} );
+    let respostaParaEnvio = {
+        nome,
+        email
+    };
+
+    resposta.json( respostaParaEnvio )
+
+});
+
+aplicativo.listen(3000, function(){
+    console.log("Servidor escutando na porta 3000");
+});
+

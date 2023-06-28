@@ -74,9 +74,11 @@ const manipuladorHttp = ( request, response )=>{
 
     }
 }
+
 const digaOla =  function(){
     console.log('Olá');
 }
+
 module.exports = {
     manipuladorHttp: manipuladorHttp,
     digaOla: digaOla
