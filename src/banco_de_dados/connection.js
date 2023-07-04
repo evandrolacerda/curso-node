@@ -60,4 +60,4 @@ Tarefa.init({
 })();
 
 
-module.exports = { conexao : conexao };
+module.exports = { conexao : conexao, Tarefa : Tarefa };
