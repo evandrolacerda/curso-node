@@ -1,4 +1,5 @@
 const express = require('express');
+const { conexao, Tarefa } = require('./src/banco_de_dados/connection');
 
 
 
