@@ -19,7 +19,7 @@ const criarTarefa = async function( requisicao, resposta ){
     }catch(erro){
         console.log(erro);
 
-        resposta.json(erro).status(400);
+        resposta.json(erro).statusCode(400);
     }
 };
 
@@ -28,18 +28,28 @@ const recuperarTarefa = async function( requisicao, resposta ){
     
     try{
         const tarefa = await Tarefa.findByPk( id );
+        
+        if( !tarefa ){
 
-        resposta.json( tarefa ).status(200);
+            resposta.status(404).json({
+                mensagem : "erro aconteceu"
+            });
 
+            return;
+        }
+        
+        resposta.status(200).json( tarefa );
+    
 
     }catch(erro){
         console.log(erro);
 
-        resposta.json(erro).status(500);
+        resposta.status(500).json(erro);
     }
 
 };
 
 module.exports = {
-    criarTarefa : criarTarefa
+    criarTarefa : criarTarefa,
+    recuperarTarefa : recuperarTarefa
 };
