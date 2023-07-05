@@ -1,6 +1,6 @@
 const express = require('express');
 const { conexao, Tarefa } = require('./src/banco_de_dados/connection')
-const { criarTarefa } = require('./src/controllers/tarefas')
+const { criarTarefa, recuperarTarefa } = require('./src/controllers/tarefas')
 
 
 const aplicativo = express();
@@ -53,6 +53,7 @@ aplicativo.post("/contato", function( requisicao, resposta ){
 
 aplicativo.post('/tarefas', criarTarefa );
 
+aplicativo.get('/tarefas/:id', recuperarTarefa);
 
 aplicativo.listen(3000, function(){
     console.log("Servidor escutando na porta 3000");
