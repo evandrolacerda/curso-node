@@ -49,7 +49,31 @@ const recuperarTarefa = async function( requisicao, resposta ){
 
 };
 
+const listarTarefas = async function( requisicao, resposta ){
+
+    try{
+
+        [ resultado, meta ] = await conexao.query("EXEC listar_tarefas_por_status @status = :status", {
+            replacements: {
+                status: 0
+            }
+        } );
+
+        console.log( resultado );
+        console.log( meta );
+
+        resposta.status(200).json( resultado );
+
+    }catch(erro){
+        console.log(erro);
+
+        resposta.status(500).json(erro);
+    }
+
+}
+
 module.exports = {
     criarTarefa : criarTarefa,
-    recuperarTarefa : recuperarTarefa
+    recuperarTarefa : recuperarTarefa,
+    listarTarefas : listarTarefas
 };

@@ -1,6 +1,6 @@
 const express = require('express');
 const { conexao, Tarefa } = require('./src/banco_de_dados/connection')
-const { criarTarefa, recuperarTarefa } = require('./src/controllers/tarefas')
+const { criarTarefa, recuperarTarefa, listarTarefas } = require('./src/controllers/tarefas')
 
 
 const aplicativo = express();
@@ -32,6 +32,7 @@ aplicativo.post("/contato", function( requisicao, resposta ){
 });
 
 aplicativo.post('/tarefas', criarTarefa );
+aplicativo.get('/tarefas', listarTarefas );
 
 aplicativo.get('/tarefas/:id', recuperarTarefa);
 
