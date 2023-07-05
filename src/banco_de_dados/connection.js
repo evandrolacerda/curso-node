@@ -28,7 +28,7 @@ Tarefa.init({
             allowNull : false,
             defaultValue : false
 
-        },
+        }
     }, 
     {
         sequelize: conexao,

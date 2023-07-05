@@ -1,20 +1,22 @@
-const { conexao, Tarefa } = require('../banco_de_dados/connection')
-const { Op } = require('sequelize');
+const { conexao, Tarefa } = require('../banco_de_dados/connection');
 
 const criarTarefa = async function( requisicao, resposta ){
     
     try{
-        const tarefa = await Tarefa.create({
-            descricao : requisicao.body.descricao
-        });
+        
+        const [novaTarefa, meta] = await conexao.query("EXEC [dbo].[inserir_tarefa] @descricao = :descricao, @executada = :executada", 
+        {
+            replacements: {
+                descricao: requisicao.body.descricao,
+                executada: requisicao.body.executada
+        }});
 
-        // const [resultado, meta ] = conexao.query("INSERT INTO tarefas (descricao) VALUES ( :descricao )", {
-        //     replacements : {
-        //         descricao : requisicao.body.descricao
-        //     }
-        // });
+        console.log( meta, novaTarefa );
 
-        resposta.json( tarefa ).status(201);
+        
+        resposta.status(201).json( {
+            mensagem : "Tarefa criada com sucesso",
+        } );
     
     }catch(erro){
         console.log(erro);
@@ -51,11 +53,17 @@ const recuperarTarefa = async function( requisicao, resposta ){
 
 const listarTarefas = async function( requisicao, resposta ){
 
+    let parametroExecutada = 0;
+
+    if( requisicao.query.executada ){
+        parametroExecutada = requisicao.query.executada
+    }
+
     try{
 
         [ resultado, meta ] = await conexao.query("EXEC listar_tarefas_por_status @status = :status", {
             replacements: {
-                status: 0
+                status: parametroExecutada
             }
         } );
 
