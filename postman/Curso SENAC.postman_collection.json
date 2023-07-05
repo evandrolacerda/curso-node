@@ -1,0 +1,513 @@
+{
+	"info": {
+		"_postman_id": "92b58253-d93e-4ba1-ac10-16930a7128b9",
+		"name": "Curso SENAC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST CONTATO",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"usuario\": { \n        \"nome\" : \"Evandro\",\n        \"email\": \"evandroplacerda@example.com\",\n        \"mensagem\": \"Teste\",\n        \"filhos\" : [ \n            {\n            \"nome\" : \"Henrique\",\n            \"email\": \"henrique@example.com\"\n            },\n            {\n                \"nome\" : \"Helena\",\n                \"email\": \"helena@example.com\"\n            }\n        ]\n    \n    }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3000/contato",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"contato"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "POST CONTATO",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"usuario\": { \n        \"nome\" : \"Evandro\",\n        \"email\": \"evandroplacerda@example.com\",\n        \"mensagem\": \"Teste\",\n        \"filhos\" : [ \n            {\n            \"nome\" : \"Henrique\",\n            \"email\": \"henrique@example.com\"\n            },\n            {\n                \"nome\" : \"Helena\",\n                \"email\": \"helena@example.com\"\n            }\n        ]\n    \n    }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:3000/contato",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"contato"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "56"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"38-oj+uAP2eicdV1s4SCBY+jBeQy4E\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 05 Jul 2023 15:02:53 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"nome\": \"Evandro\",\n    \"email\": \"evandroplacerda@example.com\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Criar Nova Tarefa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    descricao: \"Aprender Node JS\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3000/tarefas",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"tarefas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Criar Nova Tarefa",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"descricao\": \"Aprender Node JS executada\",\n    \"executada\" : true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:3000/tarefas",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"tarefas"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "40"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"28-4MVSQGyaQqdAz2qb367jDcmRuHw\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 05 Jul 2023 15:03:30 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"mensagem\": \"Tarefa criada com sucesso\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Atualizar Tarefa",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"descricao\": \"Aprender Node JS - LOGO\",\n    \"executada\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3000/tarefas/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"tarefas",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Atualizar Tarefa",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"descricao\": \"Aprender Node JS - LOGO\",\n    \"executada\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:3000/tarefas/1",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"tarefas",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "198"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"c6-zUUVlLm6QcvGznSMl+Gtig+/bio\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 05 Jul 2023 14:57:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"mensagem\": \"Tarefa atualizada com sucesso\",\n    \"tarefa\": [\n        {\n            \"id\": 1,\n            \"descricao\": \"Aprender Node JS - LOGO\",\n            \"executada\": false,\n            \"createdAt\": \"2023-07-04T14:37:15.771Z\",\n            \"updatedAt\": \"2023-07-04T14:37:15.771Z\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Recuperar Tarefa",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3000/tarefas/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"tarefas",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Recuperar Tarefa",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:3000/tarefas/1",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"tarefas",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "142"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"8e-fWVaRwokGJhQkdhhT6xNCCiGuaU\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 05 Jul 2023 15:03:03 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"descricao\": \"Aprender Node JS - LOGO\",\n    \"executada\": false,\n    \"createdAt\": \"2023-07-04T14:37:15.771Z\",\n    \"updatedAt\": \"2023-07-04T14:37:15.771Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Recuperar Tarefas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3000/tarefas/1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"tarefas",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Recuperar Tarefas",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:3000/tarefas?executada=0",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"tarefas"
+							],
+							"query": [
+								{
+									"key": "executada",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "800"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"320-5lFyrnrCnQUH7VY0andnKemdlzg\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 05 Jul 2023 14:40:57 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"descricao\": \"Aprender NodeJs\",\n        \"executada\": false,\n        \"createdAt\": \"2023-07-04T14:37:15.771Z\",\n        \"updatedAt\": \"2023-07-04T14:37:15.771Z\"\n    },\n    {\n        \"id\": 2,\n        \"descricao\": \"\",\n        \"executada\": false,\n        \"createdAt\": \"2023-07-04T14:39:38.568Z\",\n        \"updatedAt\": \"2023-07-04T14:39:38.568Z\"\n    },\n    {\n        \"id\": 3,\n        \"descricao\": \"Aprender Node JS\",\n        \"executada\": false,\n        \"createdAt\": \"2023-07-05T14:34:32.310Z\",\n        \"updatedAt\": \"2023-07-05T14:34:32.310Z\"\n    },\n    {\n        \"id\": 4,\n        \"descricao\": \"Aprender Node JS\",\n        \"executada\": false,\n        \"createdAt\": \"2023-07-05T14:34:46.690Z\",\n        \"updatedAt\": \"2023-07-05T14:34:46.690Z\"\n    },\n    {\n        \"id\": 5,\n        \"descricao\": \"Aprender Node JS\",\n        \"executada\": false,\n        \"createdAt\": \"2023-07-05T14:36:04.790Z\",\n        \"updatedAt\": \"2023-07-05T14:36:04.790Z\"\n    },\n    {\n        \"id\": 6,\n        \"descricao\": \"Aprender Node JS\",\n        \"executada\": false,\n        \"createdAt\": \"2023-07-05T14:36:28.066Z\",\n        \"updatedAt\": \"2023-07-05T14:36:28.066Z\"\n    }\n]"
+				}
+			]
+		}
+	]
+}
