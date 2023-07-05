@@ -1,3 +1,4 @@
+const connection = require('../banco_de_dados/connection');
 const { conexao, Tarefa } = require('../banco_de_dados/connection');
 
 const criarTarefa = async function( requisicao, resposta ){
@@ -80,8 +81,60 @@ const listarTarefas = async function( requisicao, resposta ){
 
 }
 
+
+const atualizarTarefa = async function( requisicao, resposta ){
+
+    const id = requisicao.params.id;
+
+    try{
+
+        const [tarefa, meta] = await conexao.query("SELECT TOP 1 * FROM tarefas WHERE id = :id", {
+            replacements:{
+                id: id
+            }
+        });
+
+        if( !tarefa ){
+            resposta.status(404).json({
+                mensagem : "Tarefa não encontrada"
+            });
+
+            return;
+        }
+
+        const [resultado, metadados] = await conexao.query("UPDATE tarefas SET executada = :executada, descricao = :descricao WHERE id = :id", {
+            replacements:{
+                id: id,
+                executada: requisicao.body.executada,
+                descricao: requisicao.body.descricao
+            }
+        });
+
+        console.log( resultado );
+        console.log( metadados );
+
+        const [tarefaAtualizada, metaAtualizada] = await conexao.query("SELECT TOP 1 * FROM tarefas WHERE id = :id", {
+            replacements:{
+                id: id
+            }
+        });
+
+        resposta.status(200).json({
+            mensagem : "Tarefa atualizada com sucesso",
+            tarefa : tarefaAtualizada
+        });
+
+    }catch(erro){
+        console.log(erro);
+
+        resposta.status(500).json(erro);
+    }
+
+};
+
 module.exports = {
     criarTarefa : criarTarefa,
     recuperarTarefa : recuperarTarefa,
-    listarTarefas : listarTarefas
+    listarTarefas : listarTarefas,
+    atualizarTarefa : atualizarTarefa
 };
