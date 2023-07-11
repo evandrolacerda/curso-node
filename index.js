@@ -18,6 +18,7 @@ aplicativo.put('/tarefas/:id', atualizarTarefa );
 aplicativo.get('/tarefas', listarTarefas );
 aplicativo.get('/tarefas/:id', recuperarTarefa );
 
+aplicativo.post('/usuario', usuario.criar );
 
 
 aplicativo.listen(3000, function(){

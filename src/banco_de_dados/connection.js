@@ -9,8 +9,47 @@ const conexao = new Sequelize('master', 'sa', 'DockerIsTheBest!', {
     dialectOptions: {
     }
 });
-
+class Usuario extends Model{}
 class Tarefa extends Model { }
+
+Usuario.init({
+    id : {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+        allowNull: false
+    },
+    email: {
+        type: DataTypes.STRING(100),
+        allowNull: false
+    },
+    senha:{
+        type: DataTypes.STRING(64),
+        allowNull: false
+    }
+}, {
+    sequelize: conexao,
+    tableName: 'usuarios', 
+    modelName: 'Usuario'
+});
+
+// conexao.define('Usuario', {
+//     id : {
+//         type: DataTypes.INTEGER,
+//         autoIncrement: true,
+//         primaryKey: true,
+//         allowNull: false
+//     },
+//     email: {
+//         type: DataTypes.STRING(100),
+//         allowNull: false
+//     },
+//     senha:{
+//         type: DataTypes.STRING(64),
+//         allowNull: false
+//     }
+// });
+
 
 Tarefa.init({
         id : {
@@ -60,4 +99,4 @@ Tarefa.init({
 })();
 
 
-module.exports = { conexao : conexao, Tarefa : Tarefa };
+module.exports = { conexao : conexao, Tarefa : Tarefa, Usuario : Usuario };
