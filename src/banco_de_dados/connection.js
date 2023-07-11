@@ -21,7 +21,8 @@ Usuario.init({
     },
     email: {
         type: DataTypes.STRING(100),
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     senha:{
         type: DataTypes.STRING(64),
@@ -91,6 +92,7 @@ Tarefa.init({
     try{
         
         await Tarefa.sync({ force : false });
+        await Usuario.sync({ force : false });
 
     }catch(erro){
         console.log(erro);
