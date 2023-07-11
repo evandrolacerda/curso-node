@@ -1,7 +1,7 @@
 const express = require('express');
 const { conexao, Tarefa } = require('./src/banco_de_dados/connection')
 const { criarTarefa, recuperarTarefa, listarTarefas, atualizarTarefa } = require('./src/controllers/tarefas')
-
+const contato = require('./src/controllers/contato')
 
 const aplicativo = express();
 aplicativo.use( express.json() );
@@ -11,34 +11,12 @@ aplicativo.get("/", function( requisicao, resposta ){
     resposta.send("<h1>Olá Mundo</h1>");
 });
 
-aplicativo.post("/contato", function( requisicao, resposta ){
-    
-    const nome = requisicao.body.usuario.nome;
-    const email = requisicao.body.usuario.email;
-    const filhos = requisicao.body.usuario.filhos;
-
-    filhos.forEach( function(filho ){
-        console.log( filho.nome , filho.email );
-    });
-
-
-    let respostaParaEnvio = {
-        nome,
-        email
-    };
-
-    resposta.json( respostaParaEnvio )
-
-});
+aplicativo.post("/contato", contato.contato );
 
 aplicativo.post('/tarefas', criarTarefa );
 aplicativo.put('/tarefas/:id', atualizarTarefa );
 aplicativo.get('/tarefas', listarTarefas );
-
 aplicativo.get('/tarefas/:id', recuperarTarefa );
-
-
-
 
 
 
