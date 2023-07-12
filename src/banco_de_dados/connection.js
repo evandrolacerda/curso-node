@@ -1,10 +1,10 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
+const config = require('../../config/app');
 
-
-const conexao = new Sequelize('master', 'sa', 'DockerIsTheBest!', {
-    host: 'localhost',
+const conexao = new Sequelize(config.db_name, config.db_user,config.db_password, {
+    host: config.db_server,
     dialect: 'mssql',
-    server: 'localhost',
+    server: config.db_server,
     port: 1433,
     dialectOptions: {
     }

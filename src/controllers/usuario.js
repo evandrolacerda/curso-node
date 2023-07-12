@@ -1,6 +1,9 @@
 const { Usuario } = require('../banco_de_dados/connection');
 const { Validator } = require('node-input-validator');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const config = require('../../config/app');
+
 
 const criar = async function( requisicao, resposta ){
     
@@ -33,7 +36,7 @@ const criar = async function( requisicao, resposta ){
 
 } 
 
-login = async function( requisicao, resposta ){
+const login = async function( requisicao, resposta ){
     const validador = new Validator( requisicao.body, {
         email : 'required|email',
         senha: 'required|minLength:6'
@@ -64,8 +67,6 @@ login = async function( requisicao, resposta ){
 
     let senha = requisicao.body.senha;
 
-    console.log( senha, usuario.senha )
-
     let senhaBate = await bcrypt.compare( senha, usuario.senha );
 
     if( !senhaBate ){
@@ -74,7 +75,14 @@ login = async function( requisicao, resposta ){
         });
     }
 
-    resposta.json( usuario );
+    const obj = {
+        "sub" : usuario.email,
+        "id" : usuario.id
+    }
+
+    const token = jwt.sign( obj, config.jwt_secret, {expiresIn : '4h'} );
+
+    resposta.json( { token : token } );
 
 }
 

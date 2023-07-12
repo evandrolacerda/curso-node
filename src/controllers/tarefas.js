@@ -1,8 +1,25 @@
 const connection = require('../banco_de_dados/connection');
 const { conexao, Tarefa } = require('../banco_de_dados/connection');
+const { Validator } = require('node-input-validator');
 
 const criarTarefa = async function( requisicao, resposta ){
     
+    const validador = new Validator( requisicao.body, {
+        descricao : 'required|minLength:3',
+        executada: 'required|boolean'
+    },{
+        'descricao.required' : 'O campo Descrição é obrigatório',
+        'descricao.minLength' : 'O campo Descrição deve ter no mínimo 3 caracteres',
+        'executada.required' : 'O campo Executada é obrigatório',
+        'executada.boolean' : 'O campo Executada deve ser um booleano'
+    });
+
+    let passou = await validador.check();
+
+    if( !passou ){
+        return resposta.status(422).json( validador.errors );
+    }
+
     try{
         
         const [novaTarefa, meta] = await conexao.query("EXEC [dbo].[inserir_tarefa] @descricao = :descricao, @executada = :executada", 
@@ -21,8 +38,7 @@ const criarTarefa = async function( requisicao, resposta ){
     
     }catch(erro){
         console.log(erro);
-
-        resposta.json(erro).statusCode(400);
+        resposta.status(400).json(error);
     }
 };
 
