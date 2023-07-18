@@ -116,10 +116,16 @@
 			"name": "Criar Nova Tarefa",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ3ZWRvd2lvZXdxZWl3aGl3ZXVyZW9ydHdlckBleGFtcGxlLmNvbSIsImlkIjoxLCJpYXQiOjE2ODkxNjgyNTUsImV4cCI6MTY4OTE4MjY1NX0.F4CtE7gU_3VqB-QNptbuMhOQ8QFuDfNA1Ez0BZvlomo",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    descricao: \"Aprender Node JS\"\n}",
+					"raw": "{\n    \"descricao\": \"Aprender Node JS\",\n    \"executada\": true\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -211,7 +217,13 @@
 			"name": "Atualizar Tarefa",
 			"request": {
 				"method": "PUT",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ3ZWRvd2lvZXdxZWl3aGl3ZXVyZW9ydHdlckBleGFtcGxlLmNvbSIsImlkIjoxLCJpYXQiOjE2ODkxNjgyNTUsImV4cCI6MTY4OTE4MjY1NX0.F4CtE7gU_3VqB-QNptbuMhOQ8QFuDfNA1Ez0BZvlomo",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n    \"descricao\": \"Aprender Node JS - LOGO\",\n    \"executada\": 0\n}",
@@ -311,7 +323,13 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ3ZWRvd2lvZXdxZWl3aGl3ZXVyZW9ydHdlckBleGFtcGxlLmNvbSIsImlkIjoxLCJpYXQiOjE2ODkxNjgyNTUsImV4cCI6MTY4OTE4MjY1NX0.F4CtE7gU_3VqB-QNptbuMhOQ8QFuDfNA1Ez0BZvlomo",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "",
@@ -411,7 +429,13 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ3ZWRvd2lvZXdxZWl3aGl3ZXVyZW9ydHdlckBleGFtcGxlLmNvbSIsImlkIjoxLCJpYXQiOjE2ODkxNjgyNTUsImV4cCI6MTY4OTE4MjY1NX0.F4CtE7gU_3VqB-QNptbuMhOQ8QFuDfNA1Ez0BZvlomo",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "",
@@ -508,6 +532,66 @@
 					"body": "[\n    {\n        \"id\": 1,\n        \"descricao\": \"Aprender NodeJs\",\n        \"executada\": false,\n        \"createdAt\": \"2023-07-04T14:37:15.771Z\",\n        \"updatedAt\": \"2023-07-04T14:37:15.771Z\"\n    },\n    {\n        \"id\": 2,\n        \"descricao\": \"\",\n        \"executada\": false,\n        \"createdAt\": \"2023-07-04T14:39:38.568Z\",\n        \"updatedAt\": \"2023-07-04T14:39:38.568Z\"\n    },\n    {\n        \"id\": 3,\n        \"descricao\": \"Aprender Node JS\",\n        \"executada\": false,\n        \"createdAt\": \"2023-07-05T14:34:32.310Z\",\n        \"updatedAt\": \"2023-07-05T14:34:32.310Z\"\n    },\n    {\n        \"id\": 4,\n        \"descricao\": \"Aprender Node JS\",\n        \"executada\": false,\n        \"createdAt\": \"2023-07-05T14:34:46.690Z\",\n        \"updatedAt\": \"2023-07-05T14:34:46.690Z\"\n    },\n    {\n        \"id\": 5,\n        \"descricao\": \"Aprender Node JS\",\n        \"executada\": false,\n        \"createdAt\": \"2023-07-05T14:36:04.790Z\",\n        \"updatedAt\": \"2023-07-05T14:36:04.790Z\"\n    },\n    {\n        \"id\": 6,\n        \"descricao\": \"Aprender Node JS\",\n        \"executada\": false,\n        \"createdAt\": \"2023-07-05T14:36:28.066Z\",\n        \"updatedAt\": \"2023-07-05T14:36:28.066Z\"\n    }\n]"
 				}
 			]
+		},
+		{
+			"name": "Salvar Usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"wedowioewqeiwhiweureortwer@example.com\",\n    \"senha\": \"1223232323\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3000/usuario",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"wedowioewqeiwhiweureortwer@example.com\",\n    \"senha\": \"123456789\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3000/login",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
