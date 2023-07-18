@@ -79,7 +79,7 @@ const listarTarefas = async function( requisicao, resposta ){
 
     try{
 
-        [ resultado, meta ] = await conexao.query("EXEC listar_tarefas_por_status @status = :status", {
+        [ resultado, meta ] = await conexao.query("SELECT * FROM  tarefas WHERE executada = :status", {
             replacements: {
                 status: parametroExecutada
             }
@@ -164,7 +164,7 @@ const deletarTarefa = async function( requisicao, resposta ){
 
     try{
 
-        //await tarefa.delete();
+        //const deletados = await tarefa.destroy();
 
         // const deletados = await Tarefa.destroy({
         //     where:{
@@ -172,17 +172,25 @@ const deletarTarefa = async function( requisicao, resposta ){
         //     }
         // });
 
-        const deletados = await Tarefa.destroy({
-            where:{
-                descricao:{
-                    [Op.like]: "%Aprender%"
-                }
-                
-            }
-        });
-        //delete from tarefas where descricao like '%Aprender%'
+        // const deletados = await Tarefa.destroy({
+        //     where:{
+        //         descricao:{
+        //             [Op.like]: "%Aprender%"
+        //         },
+        //     }
+        // });
+        //delete from tarefas where descricao like '%Aprender%' and executada in (0,1)
 
-        resposta.status(200).json({ deletados : deletados });
+        const [deletados, metadados] = await conexao.query("DELETE FROM tarefas WHERE id = :id", {
+            replacements:{
+                id: id
+            }
+        })
+
+        resposta.status(200).json({ 
+            deletados, 
+            metadados
+        });
 
     }catch(erro){
         console.log(erro);
