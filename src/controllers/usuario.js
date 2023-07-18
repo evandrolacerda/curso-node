@@ -80,7 +80,7 @@ const login = async function( requisicao, resposta ){
         "id" : usuario.id
     }
 
-    const token = jwt.sign( obj, config.jwt_secret, {expiresIn : '4h'} );
+    const token = jwt.sign( obj, config.jwt_secret, {expiresIn : '5h'} );
 
     resposta.json( { token : token } );
 
