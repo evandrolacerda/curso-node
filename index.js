@@ -1,6 +1,6 @@
 const express = require('express');
 const { conexao, Tarefa } = require('./src/banco_de_dados/connection')
-const { criarTarefa, recuperarTarefa, listarTarefas, atualizarTarefa } = require('./src/controllers/tarefas')
+const { criarTarefa, recuperarTarefa, listarTarefas, atualizarTarefa, deletarTarefa } = require('./src/controllers/tarefas')
 const contato = require('./src/controllers/contato')
 
 const config = require('./config/app')
@@ -47,12 +47,15 @@ aplicativo.post('/tarefas', middlewareAutenticacao, criarTarefa );
 aplicativo.put('/tarefas/:id', middlewareAutenticacao,atualizarTarefa );
 aplicativo.get('/tarefas', middlewareAutenticacao, listarTarefas );
 aplicativo.get('/tarefas/:id',middlewareAutenticacao, recuperarTarefa );
+aplicativo.delete('/tarefas/:id', middlewareAutenticacao, deletarTarefa );
+
 
 aplicativo.post('/usuario', usuario.criar );
 
 
+const serverPort = config.server_port;
 
-aplicativo.listen(3000, function(){
-    console.log("Servidor escutando na porta 3000");
+aplicativo.listen( serverPort , function(){
+    console.log("Servidor escutando na porta " + serverPort );
 });
 

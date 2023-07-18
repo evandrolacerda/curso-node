@@ -1,6 +1,7 @@
 const connection = require('../banco_de_dados/connection');
 const { conexao, Tarefa } = require('../banco_de_dados/connection');
 const { Validator } = require('node-input-validator');
+const { Op } = require('sequelize');
 
 const criarTarefa = async function( requisicao, resposta ){
     
@@ -148,9 +149,54 @@ const atualizarTarefa = async function( requisicao, resposta ){
 
 };
 
+
+const deletarTarefa = async function( requisicao, resposta ){
+
+    const id = requisicao.params.id;
+
+    const tarefa = await Tarefa.findByPk( id );
+
+    if( !tarefa ){
+        return resposta.status(404).json({
+            mensagem : "Tarefa não encontrada"
+        });
+    }
+
+    try{
+
+        //await tarefa.delete();
+
+        // const deletados = await Tarefa.destroy({
+        //     where:{
+        //         id: id
+        //     }
+        // });
+
+        const deletados = await Tarefa.destroy({
+            where:{
+                descricao:{
+                    [Op.like]: "%Aprender%"
+                }
+                
+            }
+        });
+        //delete from tarefas where descricao like '%Aprender%'
+
+        resposta.status(200).json({ deletados : deletados });
+
+    }catch(erro){
+        console.log(erro);
+
+        resposta.status(500).json(erro);
+    }
+
+
+}
+
 module.exports = {
     criarTarefa : criarTarefa,
     recuperarTarefa : recuperarTarefa,
     listarTarefas : listarTarefas,
-    atualizarTarefa : atualizarTarefa
+    atualizarTarefa : atualizarTarefa,
+    deletarTarefa : deletarTarefa
 };

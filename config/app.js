@@ -12,5 +12,6 @@ module.exports = {
     "db_server" : process.env.DB_SERVER,
     "db_name" : process.env.DB_DATABASE,
     "db_user" : process.env.DB_USER,
-    "db_password" : process.env.DB_PASSWORD
+    "db_password" : process.env.DB_PASSWORD,
+    "server_port" : process.env.SERVER_PORT
 }
