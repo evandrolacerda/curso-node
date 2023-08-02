@@ -39,7 +39,7 @@ const criarTarefa = async function( requisicao, resposta ){
     
     }catch(erro){
         console.log(erro);
-        resposta.status(400).json(error);
+        resposta.status(400).json(erro);
     }
 };
 
