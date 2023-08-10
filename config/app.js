@@ -6,6 +6,7 @@ let dotenv = require('dotenv').config({
     path: path
 });
 
+console.log( process.env );
 
 module.exports = {
     "jwt_secret" : process.env.JWT_SECRET,
@@ -15,3 +16,4 @@ module.exports = {
     "db_password" : process.env.DB_PASSWORD,
     "server_port" : process.env.SERVER_PORT
 }
+

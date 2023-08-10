@@ -5,7 +5,7 @@ const conexao = new Sequelize(config.db_name, config.db_user,config.db_password,
     host: config.db_server,
     dialect: 'mssql',
     server: config.db_server,
-    port: 1433,
+    port: 1434,
     dialectOptions: {
     }
 });
